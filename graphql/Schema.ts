@@ -1,9 +1,5 @@
 import { gql } from "apollo-server-express"; //will create a schema
 const Schema = gql`
-  type Person {
-    id: ID!
-    name: String
-  }
   type Story {
     id: ID!
     title: String
@@ -14,8 +10,6 @@ const Schema = gql`
 
   #handle user commands
   type Query {
-    getAllPeople: [Person] #will return multiple Person instances
-    getPerson(id: Int): Person 
     getAllStories: [Story]
     getStory(id: Int): Story
 }`;
