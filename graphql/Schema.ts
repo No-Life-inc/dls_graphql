@@ -4,10 +4,20 @@ const Schema = gql`
     id: ID!
     name: String
   }
+  type Story {
+    id: ID!
+    title: String
+    bodyText: String
+    imgUrl: String
+    createdAt: String
+  }
+
   #handle user commands
   type Query {
     getAllPeople: [Person] #will return multiple Person instances
     getPerson(id: Int): Person 
+    getAllStories: [Story]
+    getStory(id: Int): Story
 }`;
 
 
