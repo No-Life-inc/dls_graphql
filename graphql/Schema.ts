@@ -11,7 +11,7 @@ const Schema = gql`
   #handle user commands
   type Query {
     getAllStories: [Story]
-    getStory(id: Int): Story
+    getStory(id: String): Story
 }`;
 
 
