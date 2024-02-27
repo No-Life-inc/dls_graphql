@@ -2,14 +2,14 @@ import e from 'express';
 import mongoose from 'mongoose';
 
 const storySchema = new mongoose.Schema({
-  title: String,
-  bodyText: String,
-    imgUrl: String,
-    createdAt: String
+    title: String,
+    body_text: String,
+    img_url: String,
+    created_at: String
 });
 
 // Get a reference to the 'frontend_db' database
-const db = mongoose.connection.useDb('frontend_db');
+const db = mongoose.connection.useDb('frontend_backend_db');
 
 // Define your model on the 'frontend_db' database
 const Story = db.model('Story', storySchema, 'stories');
