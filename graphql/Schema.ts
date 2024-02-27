@@ -9,7 +9,7 @@ const Schema = gql`
   }
   
   type User {
-    _id: String,
+    id: ID!
     first_name: String,
     last_name: String,
     image_url: String,
