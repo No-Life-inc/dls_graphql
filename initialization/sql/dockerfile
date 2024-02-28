@@ -1,0 +1,12 @@
+# Use the official Microsoft SQL Server image
+FROM mcr.microsoft.com/mssql/server:2019-latest
+
+# Set environment variables
+ENV ACCEPT_EULA=Y
+ENV SA_PASSWORD=YourStrongPassword123
+
+# Create a new database and user table
+COPY create-db.sql /docker-entrypoint-initdb.d/
+
+# Expose the SQL Server port
+EXPOSE 1433

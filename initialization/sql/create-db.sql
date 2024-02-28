@@ -1,0 +1,16 @@
+USE master;
+GO
+
+CREATE DATABASE UserDB;
+GO
+
+USE UserDB;
+GO
+
+CREATE TABLE Users (
+    UserID INT PRIMARY KEY,
+    UserName VARCHAR(50) NOT NULL,
+    Email VARCHAR(100) NOT NULL,
+    Password VARCHAR(100) NOT NULL
+);
+GO
