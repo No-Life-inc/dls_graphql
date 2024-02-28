@@ -5,8 +5,11 @@ FROM mcr.microsoft.com/mssql/server:2019-latest
 ENV ACCEPT_EULA=Y
 ENV SA_PASSWORD=YourStrongPassword123
 
-# Create a new database and user table
-COPY create-db.sql /docker-entrypoint-initdb.d/
+# Copy the SQL script into the container
+COPY create-db.sql /create-db.sql
 
-# Expose the SQL Server port
-EXPOSE 1433
+# Copy custom entrypoint script
+COPY entrypoint.sh /entrypoint.sh
+
+# Set the custom entrypoint script as the entrypoint
+ENTRYPOINT ["/bin/bash", "/entrypoint.sh"]

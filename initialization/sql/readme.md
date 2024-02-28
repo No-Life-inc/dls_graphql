@@ -1,3 +1,5 @@
-docker build -t mssql-user-table .
+rightclick on folder -> open in terminal
 
-docker run -d -p 1433:1433 --name mssql-server mssql-user-table
+docker build -t mssql-write-db .
+
+docker run -d -p 1433:1433 --name mssql-write-db mssql-write-db
