@@ -5,7 +5,7 @@ const userSchema = new mongoose.Schema({
     _id: String,
     first_name: String,
     last_name: String,
-    image_url: String,
+    img_url: String,
     created_at: Date
 });
 

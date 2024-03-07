@@ -5,6 +5,7 @@ const Schema = gql`
     title: String,
     body_text: String,
     img_url: String,
+    user: User,
     created_at: String
   }
   
@@ -12,8 +13,7 @@ const Schema = gql`
     _id: String,
     first_name: String,
     last_name: String,
-    image_url: String,
-    created_at: String
+    img_url: String,
   }
 
   #handle user commands
