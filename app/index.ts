@@ -23,7 +23,7 @@ await mongoose.connect('mongodb://admin:Passw0rd!@localhost:27017/admin', {});
   await server.start(); //start the GraphQL server.
   server.applyMiddleware({ app });
   await new Promise<void>(
-    (resolve) => httpServer.listen({ port: 4000 }, resolve) //run the server on port 4000
+    (resolve) => httpServer.listen({ port: 4001 }, resolve) //run the server on port 4000
   );
   console.log(`Server ready at http://localhost:4000${server.graphqlPath}`);
 }

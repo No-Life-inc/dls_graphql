@@ -5,7 +5,12 @@ const storySchema = new mongoose.Schema({
     title: String,
     body_text: String,
     img_url: String,
-    created_at: String
+    created_at: String,
+    user: {
+        first_name: String,
+        last_name: String,
+        img_url: String
+    }
 });
 
 // Get a reference to the 'frontend_db' database
