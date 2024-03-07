@@ -7,6 +7,7 @@ const storySchema = new mongoose.Schema({
     img_url: String,
     created_at: String,
     user: {
+        id: String,
         first_name: String,
         last_name: String,
         img_url: String
