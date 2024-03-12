@@ -17,10 +17,10 @@ The repo is divided into folders with the respective responsibilities:
 ## Environment Variables
 Create a .Env in the root folder.
 
-- PORT: 4000
-- MONGOUSER: admin
-- MONGOPW: Passw0rd!
-- MONGOURL: @localhost:27017/admin
+- PORT=4000
+- MONGOUSER=admin
+- MONGOPW=Passw0rd!
+- MONGOURL=@localhost:27017/admin
 
 ## How To Run
 Make sure the environment variables are set.<br>
