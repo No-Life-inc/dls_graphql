@@ -10,7 +10,7 @@ const Schema = gql`
   }
   
   type User {
-    id: ID,
+    id: ID!
     first_name: String,
     last_name: String,
     img_url: String,
@@ -20,6 +20,8 @@ const Schema = gql`
   type Query {
     getAllStories: [Story]
     getStory(id: String): Story
+    getAllUsers: [User]  
+    getUser(id: String): User
 }
 `;
 
