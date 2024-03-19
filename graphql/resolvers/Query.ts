@@ -1,6 +1,5 @@
 import Story from "../../mongoose/models/storyModel";
 
-
 export default {
     Query: {
         getAllStories: async () => {
