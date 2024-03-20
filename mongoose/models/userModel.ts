@@ -1,34 +1,5 @@
 import mongoose from 'mongoose';
-
-/**
- * Define the UserInfo model
- * @param {String} firstName - The first name of the user
- * @param {String} lastName - The last name of the user
- * @param {String} imgUrl - The image URL of the user
- * @param {String} email - The email of the user
- * @param {Date} createdAt - The date the user info was created
- */
-const userInfoSchema = new mongoose.Schema({
-    firstName: String,
-    lastName: String,
-    imgUrl: String,
-    email: String,
-    createdAt: Date
-}, { _id: false });
-
-/**
- * Define the User model
- * @param {String} userId - The ID of the user
- * @param {String} userGuid - The GUID of the user
- * @param {Date} createdAt - The date the user was created
- * @param {Object} userInfo - The user's information
- */
-const userSchema = new mongoose.Schema({
-    userId: String,
-    userGuid: String,
-    createdAt: Date,
-    userInfo: userInfoSchema
-});
+import userSchema from '../schemas/userSchema';
 
 /**
  * Get a reference to the 'frontend_backend_db' database
