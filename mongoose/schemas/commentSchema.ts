@@ -2,6 +2,7 @@
 import mongoose from 'mongoose';
 import userSchema from './userSchema';
 import commentInfoSchema from './commentInfoSchema';
+import reactionSchema from './reactionSchema';
 
 /**
  * Define the Comment Schema
@@ -15,7 +16,9 @@ const commentSchema = new mongoose.Schema({
     commentId: String,
     createdAt: Date,
     user: userSchema,
-    commentInfo: commentInfoSchema
+    commentInfo: commentInfoSchema,
+    reactions: [reactionSchema]
+
 });
 
 export default commentSchema;
