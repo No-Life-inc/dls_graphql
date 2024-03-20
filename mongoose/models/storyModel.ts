@@ -9,17 +9,27 @@ import mongoose from 'mongoose';
  * @param {Date} created_at - The date the story was created
  * @param {Object} user - The user who created the story
  */
-const storySchema = new mongoose.Schema({
+const userSchema = new mongoose.Schema({
+    userId: String,
+    firstName: String,
+    lastName: String,
+    imgUrl: String
+}, { _id: false });
+
+const storyInfoSchema = new mongoose.Schema({
+    storyInfoId: String,
     title: String,
-    body_text: String,
-    img_url: String,
-    created_at: String,
-    user: {
-        id: String,
-        first_name: String,
-        last_name: String,
-        img_url: String
-    }
+    bodyText: String,
+    imgUrl: String,
+    createdAt: String
+}, { _id: false });
+
+const storySchema = new mongoose.Schema({
+    storyId: String,
+    storyGuid: String,
+    createdAt: String,
+    user: userSchema,
+    storyInfo: storyInfoSchema
 });
 
 /**
