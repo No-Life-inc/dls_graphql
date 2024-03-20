@@ -2,7 +2,6 @@ import { gql } from "apollo-server-express"; //will create a schema
 const Schema = gql`
   type User {
     user_id: ID!
-    user_guid: String
     created_at: String
     user_info: UserInfo
     stories: [Story]
@@ -23,7 +22,6 @@ const Schema = gql`
 
   type Story {
     story_id: ID!
-    story_guid: String
     created_at: String
     story_info: StoryInfo
     comments: [Comment]
@@ -40,7 +38,6 @@ const Schema = gql`
 
   type Comment {
     comment_id: ID!
-    comment_guid: String
     created_at: String
     comment_info: CommentInfo
     reactions: [Reaction]
