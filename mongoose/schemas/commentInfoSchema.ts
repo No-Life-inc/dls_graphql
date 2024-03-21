@@ -9,7 +9,7 @@ import mongoose from 'mongoose';
  **/
 
 const commentInfoSchema = new mongoose.Schema({
-    commentInfoId: String,
+    // commentInfoId: String,
     bodyText: String,
     createdAt: Date
 }, { _id: false });

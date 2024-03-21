@@ -15,7 +15,7 @@ import reactionSchema from './reactionSchema';
  */
 
 const storySchema = new mongoose.Schema({
-    storyId: String,
+    _id: String,
     createdAt: Date,
     user: userSchema,
     storyInfo: storyInfoSchema,

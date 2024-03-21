@@ -13,7 +13,7 @@ import reactionSchema from './reactionSchema';
  */
 
 const commentSchema = new mongoose.Schema({
-    commentId: String,
+    _id: String,
     createdAt: Date,
     user: userSchema,
     commentInfo: commentInfoSchema,

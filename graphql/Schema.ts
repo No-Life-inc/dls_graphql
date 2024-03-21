@@ -1,9 +1,10 @@
-import { gql } from "apollo-server-express"; //will create a schema
+import { gql } from "apollo-server-express";
+
 const Schema = gql`
   type User {
-    user_id: ID!
-    created_at: String
-    user_info: UserInfo
+    _id: ID!
+    createdAt: String
+    userInfo: UserInfo
     stories: [Story]
     comments: [Comment]
     reactions: [Reaction]
@@ -12,52 +13,51 @@ const Schema = gql`
   }
 
   type UserInfo {
-    user_info_id: ID!
-    first_name: String
-    last_name: String
-    img_url: String
+    firstName: String
+    lastName: String
+    imgUrl: String
     email: String
-    created_at: String
+    createdAt: String
   }
 
   type Story {
-    story_id: ID!
-    created_at: String
-    story_info: StoryInfo
+    _id: ID!
+    createdAt: String
+    storyInfo: StoryInfo
     comments: [Comment]
     reactions: [Reaction]
   }
 
   type StoryInfo {
-    story_info_id: ID!
+    storyInfoId: ID!
     title: String
-    body_text: String
-    img_url: String
-    created_at: String
+    bodyText: String
+    imgUrl: String
+    createdAt: String
   }
 
   type Comment {
-    comment_id: ID!
-    created_at: String
-    comment_info: CommentInfo
+    _id: ID!
+    createdAt: String
+    commentInfo: CommentInfo
     reactions: [Reaction]
   }
 
   type CommentInfo {
-    comment_info_id: ID!
-    body_text: String
-    created_at: String
+    _id: ID!
+    bodyText: String
+    createdAt: String
   }
 
   type ReactionType {
-    reaction_type_id: ID!
-    reaction_type_name: String
-    reaction_type_img: String
+    _id: ID!
+    reactionTypeName: String
+    reactionTypeImg: String
   }
 
   type Reaction {
-    reaction_id: ID!
-    reaction_type: ReactionType
+    _id: ID!
+    reactionType: ReactionType
   }
 
   type Query {
@@ -71,4 +71,3 @@ const Schema = gql`
 `;
 
 export default Schema;
-//export this Schema so we can use it in our project

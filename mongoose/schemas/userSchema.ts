@@ -8,7 +8,7 @@ import userInfoSchema from './userInfoSchema';
  */
 
 const userSchema = new mongoose.Schema({
-    userId: String,
+    _id: String,
     userInfo: userInfoSchema
 
 });

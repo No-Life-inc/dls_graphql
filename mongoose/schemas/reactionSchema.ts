@@ -9,7 +9,7 @@ import userSchema from './userSchema';
  */
 
 const reactionSchema = new mongoose.Schema({
-    reactionId: String,
+    // reactionId: String,
     user: userSchema,
     reactionType: String
 }, { _id: false });
