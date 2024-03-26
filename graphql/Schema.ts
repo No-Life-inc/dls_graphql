@@ -1,29 +1,73 @@
-import { gql } from "apollo-server-express"; //will create a schema
+import { gql } from "apollo-server-express";
+
 const Schema = gql`
-  type Story {
-    id: ID!
-    title: String,
-    body_text: String,
-    img_url: String,
-    user: User,
-    created_at: String
-  }
-  
   type User {
-    id: ID!
-    first_name: String,
-    last_name: String,
-    img_url: String,
+    _id: ID!
+    createdAt: String
+    userInfo: UserInfo
+    stories: [Story]
+    comments: [Comment]
+    reactions: [Reaction]
+    friends: [User]
+    blocked: [User]
   }
 
-  #handle user commands
+  type UserInfo {
+    firstName: String
+    lastName: String
+    imgUrl: String
+    email: String
+    createdAt: String
+  }
+
+  type Story {
+    _id: ID!
+    createdAt: String
+    storyInfo: StoryInfo
+    comments: [Comment]
+    reactions: [Reaction]
+  }
+
+  type StoryInfo {
+    storyInfoId: ID!
+    title: String
+    bodyText: String
+    imgUrl: String
+    createdAt: String
+  }
+
+  type Comment {
+    _id: ID!
+    createdAt: String
+    commentInfo: CommentInfo
+    reactions: [Reaction]
+  }
+
+  type CommentInfo {
+    _id: ID!
+    bodyText: String
+    createdAt: String
+  }
+
+  type ReactionType {
+    _id: ID!
+    reactionTypeName: String
+    reactionTypeImg: String
+  }
+
+  type Reaction {
+    _id: ID!
+    reactionType: ReactionType
+  }
+
   type Query {
+    getAllUsers: [User]
+    getUser(id: ID!): User
     getAllStories: [Story]
-    getStory(id: String): Story
-    getAllUsers: [User]  
-    getUser(id: String): User
-}
+    getStory(id: ID!): Story
+    getAllComments: [Comment]
+    getComment(id: ID!): Comment
+  }
 `;
 
-export default Schema; 
-//export this Schema so we can use it in our project
+export default Schema;
