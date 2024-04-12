@@ -120,44 +120,28 @@ CREATE TABLE comment_reaction(
 )
 GO
 
--- Create Friend List table
-CREATE TABLE friend_list(
-    friend_list_id INT IDENTITY PRIMARY KEY,
+-- Friends table (Join table for the many-to-many relationship between users and their friends)
+CREATE TABLE friends (
+    friendship_id INT IDENTITY PRIMARY KEY,
     created_at DATETIME,
     user_id INT,
-    FOREIGN KEY (user_id) REFERENCES Users(user_id)
-)
+    friend_id INT,
+    FOREIGN KEY (user_id) REFERENCES Users(user_id),
+    FOREIGN KEY (friend_id) REFERENCES Users(user_id),
+    UNIQUE(user_id, friend_id) -- Ensures uniqueness of friendships
+);
 GO
 
--- Create Friend table
-CREATE TABLE friends(
-    friend_id INT IDENTITY PRIMARY KEY,
-    created_at DATETIME,
-    friend_list_id INT,
-    FOREIGN KEY (friend_list_id) REFERENCES Friend_list(friend_list_id),
-    user_id INT,
-    FOREIGN KEY (user_id) REFERENCES Users(user_id)
-)
-GO
-
--- Create Blocked List table
-CREATE TABLE blocked_list(
-    blocked_list_id INT IDENTITY PRIMARY KEY,
-    created_at DATETIME,
-    user_id INT,
-    FOREIGN KEY (user_id) REFERENCES Users(user_id)
-)
-GO
-
--- Create Blocked table
-CREATE TABLE blocked(
+-- Blocked table
+CREATE TABLE blocked (
     blocked_id INT IDENTITY PRIMARY KEY,
     created_at DATETIME,
-    blocked_list_id INT,
-    FOREIGN KEY (blocked_list_id) REFERENCES Blocked_list(blocked_list_id),
-    user_id INT,
-    FOREIGN KEY (user_id) REFERENCES Users(user_id)
-)
+    blocking_user_id INT,
+    blocked_user_id INT,
+    FOREIGN KEY (blocking_user_id) REFERENCES Users(user_id),
+    FOREIGN KEY (blocked_user_id) REFERENCES Users(user_id),
+    UNIQUE(blocking_user_id, blocked_user_id) -- Ensures uniqueness of blocked relationships
+);
 GO
 
 -- Insert dummy data into Users table
@@ -236,28 +220,18 @@ VALUES
     (2, 2),
     (3, 3);
 
--- Insert dummy data into FriendList table
-INSERT INTO friend_list (created_at, user_id)
+-- Insert dummy data into Blocked table
+INSERT INTO Blocked (created_at, blocking_user_id, blocked_user_id)
 VALUES 
-    (GETDATE(), 1),
-    (GETDATE(), 2);
+    (GETDATE(), 1, 2),  -- User 1 blocks User 2
+    (GETDATE(), 2, 3),  -- User 2 blocks User 3
+    (GETDATE(), 3, 1);  -- User 3 blocks User 1
 
 -- Insert dummy data into Friends table
-INSERT INTO friends (created_at, friend_list_id, user_id)
+INSERT INTO Friends (created_at, user_id, friend_id)
 VALUES 
-    (GETDATE(), 1, 2),
-    (GETDATE(), 1, 3),
-    (GETDATE(), 2, 1),
-    (GETDATE(), 2, 3);
+    (GETDATE(), 1, 2),  -- User 1 is friends with User 2
+    (GETDATE(), 1, 3),  -- User 1 is friends with User 3
+    (GETDATE(), 2, 3),  -- User 2 is friends with User 3
+    (GETDATE(), 3, 1);  -- User 3 is friends with User 1
 
--- Insert dummy data into BlockedList table
-INSERT INTO blocked_list (created_at, user_id)
-VALUES 
-    (GETDATE(), 1),
-    (GETDATE(), 2);
-
--- Insert dummy data into Blocked table
-INSERT INTO blocked (created_at, blocked_list_id, user_id)
-VALUES 
-    (GETDATE(), 1, 2),
-    (GETDATE(), 2, 1);
