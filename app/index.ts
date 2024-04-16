@@ -1,12 +1,12 @@
 import { ApolloServer } from "apollo-server-express";
 import Schema from "../graphql/Schema";
 import Query from "../graphql/resolvers/Query";
-import express, {Request, Response, NextFunction}from "express";
+import express, { Request, Response, NextFunction } from "express";
 import { ApolloServerPluginDrainHttpServer } from "apollo-server-core";
 import http from "http";
 import mongoose from "mongoose";
-import dotenv from 'dotenv';
-import jwt from 'jsonwebtoken'
+import dotenv from "dotenv";
+import jwt from "jsonwebtoken";
 
 dotenv.config();
 
@@ -15,7 +15,7 @@ const port = process.env.PORT || 3000;
 const mongoUser = process.env.MONGOUSER;
 const mongoPw = process.env.MONGOPW;
 const mongoUrl = process.env.MONGOURL;
-const jwtsecret = process.env.JWTSECRET || "";
+const jwtsecret = process.env.JWT_SECRET || "";
 
 const mongoUri = `mongodb://${mongoUser}:${mongoPw}${mongoUrl}`;
 
@@ -31,23 +31,33 @@ async function startApolloServer(schema: any, resolvers: any) {
   const app = express();
   const httpServer = http.createServer(app);
 
-  const verifyToken = (req: Request,res: Response,next: NextFunction)=>{
+  app.use(express.json());
+
+  // Middleware to enforce token verification for GraphQL operations
+  const verifyTokenForGraphQL = (
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ) => {
     const token = req.headers.authorization;
 
     if (!token){
-      return res.status(401).json({message: 'Missing JWT-token'})
+      return next();
     }
+    try{
+      const buff = Buffer.from(jwtsecret, 'base64');  
+      const decoded = jwt.verify(token, buff);
 
-    jwt.verify(token,jwtsecret, (err: any,decoded:any)=>{
-      if (err){
-        return res.status(401).json({message: 'Invalid JWT-token'});
-      }
       req.user = decoded;
       next();
-    });
+    }catch(err){
+      console.debug('Verification of token failed');
+      next()
+    }
   };
 
-  app.use('/graphql', verifyToken)
+  // Apply middleware to all routes
+  app.use(verifyTokenForGraphQL);
 
   // Connect to MongoDB
   await mongoose.connect(mongoUri, {});
@@ -57,6 +67,7 @@ async function startApolloServer(schema: any, resolvers: any) {
     resolvers: Query,
     //tell Express to attach GraphQL functionality to the server
     plugins: [ApolloServerPluginDrainHttpServer({ httpServer })],
+    context: ({ req }) => ({ user: req.user }),
   }) as any;
   await server.start(); //start the GraphQL server.
   server.applyMiddleware({ app });
