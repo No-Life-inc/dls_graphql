@@ -11,5 +11,8 @@ COPY create-db.sql /create-db.sql
 # Copy custom entrypoint script
 COPY entrypoint.sh /entrypoint.sh
 
+# Set execute permissions for the entrypoint script
+RUN chmod +x /entrypoint.sh
+
 # Set the custom entrypoint script as the entrypoint
 ENTRYPOINT ["/bin/bash", "/entrypoint.sh"]
