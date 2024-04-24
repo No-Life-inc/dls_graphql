@@ -3,13 +3,14 @@ import { gql } from "apollo-server-express";
 const Schema = gql`
   type User {
     _id: ID!
-    createdAt: String
+    userGuid: String
     userInfo: UserInfo
     stories: [Story]
     comments: [Comment]
     reactions: [Reaction]
     friends: [User]
     blocked: [User]
+    createdAt: String
   }
 
   type UserInfo {
@@ -22,10 +23,11 @@ const Schema = gql`
 
   type Story {
     _id: ID!
-    createdAt: String
+    storyGuid: String
     storyInfo: StoryInfo
     comments: [Comment]
     reactions: [Reaction]
+    createdAt: String
   }
 
   type StoryInfo {
@@ -38,9 +40,10 @@ const Schema = gql`
 
   type Comment {
     _id: ID!
-    createdAt: String
+    commentGuid: String
     commentInfo: CommentInfo
     reactions: [Reaction]
+    createdAt: String
   }
 
   type CommentInfo {
