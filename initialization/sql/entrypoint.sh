@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Convert line endings
+dos2unix /entrypoint.sh
+
 # Set execute permission on the entrypoint script
 chmod +x /entrypoint.sh
 
