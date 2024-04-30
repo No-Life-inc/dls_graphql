@@ -41,22 +41,22 @@ async function startApolloServer(schema: any, resolvers: any) {
   ) => {
     const authHeader = req.headers.authorization;
 
-    if (!authHeader){
+    if (!authHeader) {
       return next();
     }
 
     // Extract the token from Authorization header
-    const token = authHeader.split(' ')[1];
+    const token = authHeader.split(" ")[1];
 
-    try{
-      const buff = Buffer.from(jwtsecret, 'base64');  
+    try {
+      const buff = Buffer.from(jwtsecret, "base64");
       const decoded = jwt.verify(token, buff);
 
       req.user = decoded;
       next();
-    }catch(err){
+    } catch (err) {
       //console.debug('Verification of token failed');
-      next()
+      next();
     }
   };
 

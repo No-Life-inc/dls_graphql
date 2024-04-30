@@ -7,6 +7,7 @@ import reactionSchema from './reactionSchema';
 /**
  * Define the Story Schema
  * @param {String} storyId - The ID of the story
+ * @param {String} storyGuid - The GUID of the story
  * @param {Date} createdAt - The date the story was created
  * @param {Object} user - The user who created the story
  * @param {Object} storyInfo - The story's information
@@ -16,6 +17,7 @@ import reactionSchema from './reactionSchema';
 
 const storySchema = new mongoose.Schema({
     _id: String,
+    storyGuid: String,
     createdAt: Date,
     user: userSchema,
     storyInfo: storyInfoSchema,

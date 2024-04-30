@@ -22,6 +22,7 @@ const Schema = gql`
 
   type Story {
     _id: ID!
+    storyGuid: String
     createdAt: String
     storyInfo: StoryInfo
     comments: [Comment]
