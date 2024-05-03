@@ -7,12 +7,12 @@ db.stories.insert([
             _id: ObjectId(),
             firstName: "Uno",
             lastName: "Testman",
-            imgUrl: "https://example.com/image1.jpg",
+            imgUrl: "user1.jpg",
         },
         storyInfo: {
             title: "Post 1",
             bodyText: "This is the body of post 1.",
-            imgUrl: "https://example.com/image1.jpg",
+            imgUrl: "story1.png",
             createdAt: new Date(),
         },
         comments: [
@@ -23,7 +23,7 @@ db.stories.insert([
                     _id: ObjectId(),
                     firstName: "Deux",
                     lastName: "Testman",
-                    imgUrl: "https://example.com/image2.jpg",
+                    imgUrl: "deux.jpg",
                 },
                 commentInfo: {
                     bodyText: "This is a comment.",
@@ -38,7 +38,7 @@ db.stories.insert([
                     _id: ObjectId(),
                     firstName: "Tres",
                     lastName: "Testerino",
-                    imgUrl: "https://example.com/image3.jpg",
+                    imgUrl: "tres.jpg",
                 },
                 reactionType: "Like"
             }
@@ -51,12 +51,12 @@ db.stories.insert([
             _id: ObjectId(),
             firstName: "Quatro",
             lastName: "Testman",
-            imgUrl: "https://example.com/image4.jpg",
+            imgUrl: "quatro.jpg",
         },
         storyInfo: {
             title: "Post 2",
             bodyText: "This is the body of post 2.",
-            imgUrl: "https://example.com/image2.jpg",
+            imgUrl: "story2.jpg",
             createdAt: new Date(),
         },
         comments: [
@@ -67,7 +67,7 @@ db.stories.insert([
                     _id: ObjectId(),
                     firstName: "Cinco",
                     lastName: "Testman",
-                    imgUrl: "https://example.com/image5.jpg",
+                    imgUrl: "cinco.jpg",
                 },
                 commentInfo: {
                     bodyText: "This is another comment.",
@@ -82,7 +82,7 @@ db.stories.insert([
                     _id: ObjectId(),
                     firstName: "Seis",
                     lastName: "Testerino",
-                    imgUrl: "https://example.com/image6.jpg",
+                    imgUrl: "seis.jpg",
                 },
                 reactionType: "Love"
             }
@@ -95,12 +95,12 @@ db.stories.insert([
             _id: ObjectId(),
             firstName: "Siete",
             lastName: "Testman",
-            imgUrl: "https://example.com/image7.jpg",
+            imgUrl: "siete.jpg",
         },
         storyInfo: {
             title: "Post 3",
             bodyText: "This is the body of post 3.",
-            imgUrl: "https://example.com/image3.jpg",
+            imgUrl: "story3.jpg",
             createdAt: new Date(),
         },
         comments: [
@@ -111,7 +111,7 @@ db.stories.insert([
                     userId: "8",
                     firstName: "Ocho",
                     lastName: "Testman",
-                    imgUrl: "https://example.com/image8.jpg",
+                    imgUrl: "oche.jpg",
                 },
                 commentInfo: {
                     bodyText: "This is yet another comment.",
@@ -126,7 +126,7 @@ db.stories.insert([
                     _id: ObjectId(),
                     firstName: "Nueve",
                     lastName: "Testerino",
-                    imgUrl: "https://example.com/image9.jpg",
+                    imgUrl: "nueve.jpg",
                 },
                 reactionType: "Wow"
             }
