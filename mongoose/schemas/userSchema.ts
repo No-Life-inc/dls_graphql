@@ -11,6 +11,7 @@ import userInfoSchema from './userInfoSchema';
 const userSchema = new mongoose.Schema({
     _id: String,
     createdAt: Date,
+    userGuid: String,
     userInfo: userInfoSchema
 
 });

@@ -54,7 +54,7 @@ CREATE TABLE story_info(
     img_url NVARCHAR(255),
     created_at DATETIME,
     story_id INT,
-    FOREIGN KEY (story_id) REFERENCES Stories(story_id)
+    FOREIGN KEY (story_id) REFERENCES Stories(story_id) ON DELETE CASCADE
 )
 GO
 
@@ -66,7 +66,7 @@ CREATE TABLE comments(
     user_id INT,
     FOREIGN KEY (user_id) REFERENCES Users(user_id),
     story_id INT,
-    FOREIGN KEY (story_id) REFERENCES Stories(story_id)
+    FOREIGN KEY (story_id) REFERENCES Stories(story_id) ON DELETE CASCADE
 )
 GO
 

@@ -28,10 +28,10 @@ const Schema = gql`
     comments: [Comment]
     reactions: [Reaction]
     createdAt: String
+    user: User
   }
 
   type StoryInfo {
-    storyInfoId: ID!
     title: String
     bodyText: String
     imgUrl: String
