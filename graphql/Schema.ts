@@ -44,6 +44,7 @@ const Schema = gql`
     commentInfo: CommentInfo
     reactions: [Reaction]
     createdAt: String
+    user: User
   }
 
   type CommentInfo {

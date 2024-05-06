@@ -76,7 +76,7 @@ CREATE TABLE comment_info(
     body_text NVARCHAR(MAX),
     created_at DATETIME,
     comment_id INT,
-    FOREIGN KEY (comment_id) REFERENCES Comments(comment_id) 
+    FOREIGN KEY (comment_id) REFERENCES Comments(comment_id) ON DELETE CASCADE
 )
 GO
 

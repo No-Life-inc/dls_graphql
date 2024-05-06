@@ -15,6 +15,7 @@ import reactionSchema from './reactionSchema';
 const commentSchema = new mongoose.Schema({
     _id: String,
     createdAt: Date,
+    commentGuid: String,
     user: userSchema,
     commentInfo: commentInfoSchema,
     reactions: [reactionSchema]
