@@ -1,10 +1,10 @@
 USE master;
 GO
 
-CREATE DATABASE write-db;
+CREATE DATABASE writedb;
 GO
 
-USE write-db;
+USE writedb;
 GO
 
 -- Create Users table
