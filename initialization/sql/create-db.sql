@@ -1,10 +1,10 @@
 USE master;
 GO
 
-CREATE DATABASE mssqlWrite;
+CREATE DATABASE write-db;
 GO
 
-USE mssqlWrite;
+USE write-db;
 GO
 
 -- Create Users table

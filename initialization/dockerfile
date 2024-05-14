@@ -4,7 +4,7 @@ FROM mongo:latest
 # Set environment variables
 ENV MONGO_INITDB_ROOT_USERNAME=admin
 ENV MONGO_INITDB_ROOT_PASSWORD=Passw0rd!
-ENV MONGO_INITDB_DATABASE=frontend_backend_db
+ENV MONGO_INITDB_DATABASE=read-db
 
 # Copy initialization script
 COPY init-db.js /docker-entrypoint-initdb.d/

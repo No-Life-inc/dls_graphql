@@ -11,7 +11,7 @@ import cors from "cors";
 
 dotenv.config();
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 0;
 
 const mongoUser = process.env.MONGOUSER;
 const mongoPw = process.env.MONGOPW;
@@ -78,6 +78,7 @@ async function startApolloServer(schema: any, resolvers: any) {
     //tell Express to attach GraphQL functionality to the server
     plugins: [ApolloServerPluginDrainHttpServer({ httpServer })],
     context: ({ req }) => ({ user: req.user }),
+    introspection: true, // enables the actual playground
   }) as any;
   await server.start(); //start the GraphQL server.
   server.applyMiddleware({ app });
