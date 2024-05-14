@@ -22,6 +22,7 @@ Create a .Env in the root folder.
 - MONGOPW=Passw0rd!
 - MONGOURL=@localhost:27017/admin
 - JWT_SECRET='MmIxM2Q1NjNmNjA1YjNiYjZiNWY0M2VjOTVhMmFhZWVmMWQ3ODAwNDlkOTFkNjJlMGQ3YzA0ZDcwZDQ2ZGU0NA=='
+- CORS_ORIGIN=localhost:8080
 
 
 ## How To Run

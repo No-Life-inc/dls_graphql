@@ -7,8 +7,16 @@ import http from "http";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 import jwt from "jsonwebtoken";
+import cors from "cors";
 
 dotenv.config();
+
+// add cors to allow cross-origin requests from env 
+const corsOptions = {
+  origin: process.env.CORS_ORIGIN,
+  optionsSuccessStatus: 200,
+};
+
 
 const port = process.env.PORT || 3000;
 
@@ -29,6 +37,9 @@ declare global {
 
 async function startApolloServer(schema: any, resolvers: any) {
   const app = express();
+
+  app.use(cors(corsOptions));
+
   const httpServer = http.createServer(app);
 
   app.use(express.json());
