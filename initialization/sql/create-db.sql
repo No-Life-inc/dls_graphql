@@ -24,7 +24,7 @@ CREATE TABLE user_info (
     email NVARCHAR(255),
     created_at DATETIME,
     user_id INT,
-    FOREIGN KEY (user_id) REFERENCES Users(user_id)
+    FOREIGN KEY (user_id) REFERENCES Users(user_id) ON DELETE CASCADE
 );
 GO
 
@@ -32,7 +32,7 @@ GO
 CREATE TABLE user_deleted(
     created_at DATETIME,
     user_id INT,
-    FOREIGN KEY (user_id) REFERENCES Users(user_id)
+    FOREIGN KEY (user_id) REFERENCES Users(user_id) ON DELETE CASCADE
 )
 GO
 
@@ -42,7 +42,7 @@ CREATE TABLE stories (
     story_guid UNIQUEIDENTIFIER,
     created_at DATETIME,
     user_id INT,
-    FOREIGN KEY (user_id) REFERENCES Users(user_id)
+    FOREIGN KEY (user_id) REFERENCES Users(user_id) ON DELETE CASCADE
 );
 GO
 
@@ -126,7 +126,7 @@ CREATE TABLE friends (
     created_at DATETIME,
     user_id INT,
     friend_id INT,
-    FOREIGN KEY (user_id) REFERENCES Users(user_id),
+    FOREIGN KEY (user_id) REFERENCES Users(user_id) ON DELETE CASCADE,
     FOREIGN KEY (friend_id) REFERENCES Users(user_id),
     UNIQUE(user_id, friend_id) -- Ensures uniqueness of friendships
 );
